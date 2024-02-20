@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.10)
+project(SimnpleCalculator)
+
+#findPython
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+
+#DefineTheSourceFile
+set(SOURCES
+Calculator.py
+)
+
+#DefineTheTarget
+add_custom_target(run_calculator
+COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/Calculator.py
+COMMENT "Running Calculator"
+)
+
+#Set the project to depend to the target
+add_dependencies(${PROJECT_NAME} run_calculator)
